@@ -13,14 +13,14 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-				#git branch: 'main', url: 'https://github.com/gurd1t/spring-boot-app.git'
-				echo 'Done...'
+		//git branch: 'main', url: 'https://github.com/gurd1t/spring-boot-app.git'
+		echo 'Done...'
             }
         }
         
         stage('Test') {
             steps {
-				sh "mvn test"
+		sh "mvn test"
             }
         }
         
@@ -79,23 +79,23 @@ pipeline {
             }
         }
 
-#		stage('Deploy To Kubernetes') {
-#            steps {
-#               withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'k8-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.8.146:6443') {
-#                        sh "kubectl apply -f deployment-service.yaml"
-#                }
-#            }
-#        }
-#        
-#        stage('Verify the Deployment') {
-#            steps {
-#               withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'k8-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.8.146:6443') {
-#                        sh "kubectl get pods -n webapps"
-#                        sh "kubectl get svc -n webapps"
-#                }
-#            }
-#        }
+/*	stage('Deploy To Kubernetes') {
+            steps {
+               withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'k8-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.8.146:6443') {
+                        sh "kubectl apply -f deployment-service.yaml"
+                }
+            }
+        }
         
+        stage('Verify the Deployment') {
+            steps {
+               withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'k8-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.8.146:6443') {
+                        sh "kubectl get pods -n webapps"
+                        sh "kubectl get svc -n webapps"
+                }
+            }
+        }
+*/        
         
     }
     post {
