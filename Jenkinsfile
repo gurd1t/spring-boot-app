@@ -33,7 +33,7 @@ pipeline {
         stage('SonarQube Analsyis') {
             steps {
                 withSonarQubeEnv('sonar') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=BoardGame -Dsonar.projectKey=BoardGame \
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=spring-boot-app -Dsonar.projectKey=spring-boot-app \
                             -Dsonar.java.binaries=. '''
                 }
             }
