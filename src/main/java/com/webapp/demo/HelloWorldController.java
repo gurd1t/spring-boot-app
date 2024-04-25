@@ -3,10 +3,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
-public class HelloWorldController {
+public class homeController {
 
 	@GetMapping(path = "/")
-    public String helloWorld() {
-        return "This is a Simple Spring Boot App deployed on a Kubernetes cluster...";
-    }
+	public String home() {
+		return "This is a Demo Spring Boot App deployed on AWS EKS Cluster using Jenkins.";
+	}
 }
