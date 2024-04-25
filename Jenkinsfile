@@ -125,7 +125,7 @@ pipeline {
                 body: body,
                 to: 'gurdit2442@gmail.com',
                 from: 'jenkins@example.com',
-                replyTo: 'jenkins@example.com',
+                replyTo: 'gurdit2442@gmail.com',
                 mimeType: 'text/html',
                 attachmentsPattern: 'trivy-image-report.html'
             )
