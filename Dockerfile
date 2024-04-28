@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11
+FROM eclipse-temurin:17.0.11_9-jre
   
 EXPOSE 8080
  
