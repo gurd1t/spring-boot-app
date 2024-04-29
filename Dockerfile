@@ -1,6 +1,6 @@
 FROM eclipse-temurin:17-jre-jammy
   
-EXPOSE 80
+EXPOSE 8080
  
 ENV APP_HOME /usr/src/app
 
