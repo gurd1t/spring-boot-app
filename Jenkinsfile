@@ -6,10 +6,10 @@ pipeline {
         maven 'maven3'
     }
 
-/*    environment {
+    environment {
         SCANNER_HOME= tool 'sonar-scanner'
     }
-*/
+
     stages {
         stage('Git Checkout') {
             steps {
@@ -18,7 +18,7 @@ pipeline {
             }
         }
         
-/*        stage('Test') {
+        stage('Test') {
             steps {
 		sh "mvn test"
             }
@@ -38,21 +38,21 @@ pipeline {
                 }
             }
         }
-*/        
+        
         stage('Build') {
             steps {
                sh "mvn clean package"
             }
         }
         
-/*        stage('Publish To Nexus') {
+        stage('Publish To Nexus') {
             steps {
                withMaven(globalMavenSettingsConfig: 'global-settings', jdk: 'jdk17', maven: 'maven3', mavenSettingsConfig: '', traceability: true) {
                     sh "mvn deploy"
                 }
             }
         }
-*/        
+        
         stage('Build & Tag Docker Image') {
             steps {
                script {
@@ -63,12 +63,12 @@ pipeline {
             }
         }
         
-/*        stage('Docker Image Scan') {
+        stage('Docker Image Scan') {
             steps {
                 sh "trivy image --format table -o trivy-image-report.html gurd1t/spring-boot-app:latest "
             }
         }
-*/        
+        
         stage('Push Docker Image') {
 			steps {
                script {
@@ -79,9 +79,9 @@ pipeline {
             }
         }
 
-/*	stage('Deploy To Kubernetes') {
+	stage('Deploy To Kubernetes') {
             steps {
-               withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'k8-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.8.146:6443') {
+               withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
                         sh "kubectl apply -f deployment-ingress.yaml"
                 }
             }
@@ -89,13 +89,13 @@ pipeline {
         
         stage('Verify the Deployment') {
             steps {
-               withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'k8-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://172.31.8.146:6443') {
-                        sh "kubectl get pods -n webapps"
-                        sh "kubectl get svc -n webapps"
+               withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                        sh "kubectl get pods -n spring-boot-app"
+                        sh "kubectl get svc -n spring-boot-app"
                 }
             }
         }
-*/        
+        
         
     }
     post {
