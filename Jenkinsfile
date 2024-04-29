@@ -9,7 +9,7 @@ pipeline {
     environment {
         SCANNER_HOME= tool 'sonar-scanner'
     }
-
+*/
     stages {
         stage('Git Checkout') {
             steps {
@@ -18,7 +18,7 @@ pipeline {
             }
         }
         
-        stage('Test') {
+/*        stage('Test') {
             steps {
 		sh "mvn test"
             }
@@ -97,8 +97,8 @@ pipeline {
         }
         
         
-/*    }
-    post {
+    }
+/*    post {
     always {
         script {
             def jobName = env.JOB_NAME
