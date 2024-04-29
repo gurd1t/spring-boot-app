@@ -1,7 +1,7 @@
 pipeline {
     agent any
     
-    tools {
+/*    tools {
         jdk 'jdk17'
         maven 'maven3'
     }
@@ -78,7 +78,7 @@ pipeline {
                }
             }
         }
-
+*/
 	stage('Deploy To Kubernetes') {
             steps {
                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
@@ -97,7 +97,7 @@ pipeline {
         }
         
         
-    }
+/*    }
     post {
     always {
         script {
@@ -132,5 +132,5 @@ pipeline {
         }
     }
 }
-
+*/
 }
