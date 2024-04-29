@@ -1,7 +1,7 @@
 pipeline {
     agent any
     
-/*    tools {
+    tools {
         jdk 'jdk17'
         maven 'maven3'
     }
@@ -9,7 +9,7 @@ pipeline {
     environment {
         SCANNER_HOME= tool 'sonar-scanner'
     }
-*/
+
     stages {
         stage('Git Checkout') {
             steps {
@@ -18,7 +18,7 @@ pipeline {
             }
         }
         
-/*        stage('Test') {
+        stage('Test') {
             steps {
 		sh "mvn test"
             }
@@ -78,7 +78,7 @@ pipeline {
                }
             }
         }
-*/
+
 	stage('Deploy To Kubernetes') {
             steps {
                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
@@ -98,7 +98,7 @@ pipeline {
         
         
     }
-/*    post {
+    post {
     always {
         script {
             def jobName = env.JOB_NAME
@@ -132,5 +132,5 @@ pipeline {
         }
     }
 }
-*/
+
 }
